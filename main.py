@@ -124,15 +124,9 @@ def scrape_indeed_india():
                             internship = {
                                 'Title': title_elem.get_text(strip=True),
                                 'Company': company_elem.get_text(strip=True) if company_elem else 'N/A',
-                                                    # Get location first
-                                                                        location = location_elem.get_text(strip=True) if location_elem else 'India'
-
-                                                                                            # Filter for Work from Home only
-                                                                                                                wfh_keywords = ['work from home', 'remote', 'wfh', 'work-from-home', 'hybrid']
-                                                                                                                                    if not any(keyword in location.lower() for keyword in wfh_keywords):
-                                                                                                                                                            continue
+                        'Location': location_elem.get_text(strip=True) if location_elem else 'India',
+                                                        'Stipend': 'Check Link',
                                                                                                                                                             
-                        'Location': location,                                'Stipend': 'Check Link',
                                 'Link': f"https://in.indeed.com/viewjob?jk={job_id}" if job_id else 'N/A',
                                 'Source': 'Indeed India',
                                 'Date': datetime.now().strftime('%Y-%m-%d'),
