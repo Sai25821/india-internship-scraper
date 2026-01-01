@@ -82,7 +82,7 @@ def scrape_indeed_india():
     internships = []
     base_url = "https://in.indeed.com/jobs"
     
-    queries = ['Data Analytics Intern', 'Machine Learning Intern', 'AI Intern', 'Data Science Intern']
+    queries = ['Data Analytics Intern', 'Machine Learning Intern', 'AI Intern', 'Data Science Intern', 'Prompt Engineering Intern', 'Generative AI Intern', 'Deep Learning Intern', 'NLP Intern']
     
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
