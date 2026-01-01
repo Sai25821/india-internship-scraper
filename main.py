@@ -28,7 +28,7 @@ def scrape_internshala():
     base_url = "https://internshala.com/internships/"
     
     # Keywords for internships
-    keywords = ['data-analytics', 'machine-learning', 'artificial-intelligence', 'data-science']
+    keywords = ['data-analytics', 'machine-learning', 'artificial-intelligence', 'data-science, 'prompt-engineering', 'generative-ai', 'deep-learning', 'nlp']]
     
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
@@ -54,11 +54,18 @@ def scrape_internshala():
                         link_elem = card.find('a', class_='view_detail_button')
                         
                         if title_elem:
+                                            # Get location first
+                                                                location = location_elem.get_text(strip=True) if location_elem else 'Remote'
+
+                                                                                    # Filter for Work from Home only
+                                                                                                        wfh_keywords = ['work from home', 'remote', 'wfh', 'work-from-home', 'hybrid']
+                                                                                                                            if not any(keyword in location.lower() for keyword in wfh_keywords):
+                                                                                                                                                    continue
+                                                                                                                                                    
                             internship = {
                                 'Title': title_elem.get_text(strip=True),
                                 'Company': company_elem.get_text(strip=True) if company_elem else 'N/A',
-                                'Location': location_elem.get_text(strip=True) if location_elem else 'Remote',
-                                'Stipend': stipend_elem.get_text(strip=True) if stipend_elem else 'Unpaid',
+                        'Location': location,                                'Stipend': stipend_elem.get_text(strip=True) if stipend_elem else 'Unpaid',
                                 'Link': f"https://internshala.com{link_elem['href']}" if link_elem else 'N/A',
                                 'Source': 'Internshala',
                                 'Date': datetime.now().strftime('%Y-%m-%d'),
@@ -117,8 +124,15 @@ def scrape_indeed_india():
                             internship = {
                                 'Title': title_elem.get_text(strip=True),
                                 'Company': company_elem.get_text(strip=True) if company_elem else 'N/A',
-                                'Location': location_elem.get_text(strip=True) if location_elem else 'India',
-                                'Stipend': 'Check Link',
+                                                    # Get location first
+                                                                        location = location_elem.get_text(strip=True) if location_elem else 'India'
+
+                                                                                            # Filter for Work from Home only
+                                                                                                                wfh_keywords = ['work from home', 'remote', 'wfh', 'work-from-home', 'hybrid']
+                                                                                                                                    if not any(keyword in location.lower() for keyword in wfh_keywords):
+                                                                                                                                                            continue
+                                                                                                                                                            
+                        'Location': location,                                'Stipend': 'Check Link',
                                 'Link': f"https://in.indeed.com/viewjob?jk={job_id}" if job_id else 'N/A',
                                 'Source': 'Indeed India',
                                 'Date': datetime.now().strftime('%Y-%m-%d'),
