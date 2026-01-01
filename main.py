@@ -57,10 +57,6 @@ def scrape_internshala():
                                             # Get location first
                                                                 location = location_elem.get_text(strip=True) if location_elem else 'Remote'
 
-                                                                                    # Filter for Work from Home only
-                                                                                                                                    wfh_keywords = ['work from home', 'remote', 'wfh', 'work-from-home', 'hybrid']
-                                                                                                                            if not any(keyword in location.lower() for keyword in wfh_keywords):
-                                                                                                                                                    continue
                                                                                                                                                     
                             internship = {
                                 'Title': title_elem.get_text(strip=True),
