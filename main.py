@@ -58,7 +58,7 @@ def scrape_internshala():
                                                                 location = location_elem.get_text(strip=True) if location_elem else 'Remote'
 
                                                                                     # Filter for Work from Home only
-                                                                                                        wfh_keywords = ['work from home', 'remote', 'wfh', 'work-from-home', 'hybrid']
+                                                                                                                                    wfh_keywords = ['work from home', 'remote', 'wfh', 'work-from-home', 'hybrid']
                                                                                                                             if not any(keyword in location.lower() for keyword in wfh_keywords):
                                                                                                                                                     continue
                                                                                                                                                     
