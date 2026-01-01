@@ -28,7 +28,7 @@ def scrape_internshala():
     base_url = "https://internshala.com/internships/"
     
     # Keywords for internships
-    keywords = ['data-analytics', 'machine-learning', 'artificial-intelligence', 'data-science, 'prompt-engineering', 'generative-ai', 'deep-learning', 'nlp']
+    keywords = ['data-analytics', 'machine-learning', 'artificial-intelligence', 'data-science', 'prompt-engineering', 'generative-ai', 'deep-learning', 'nlp']
     
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
