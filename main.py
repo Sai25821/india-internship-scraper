@@ -54,15 +54,15 @@ def scrape_internshala():
                         link_elem = card.find('a', class_='view_detail_button')
                         
                         if title_elem:
-                                            # Get location first
-                                                                location = location_elem.get_text(strip=True) if location_elem else 'Remote'
-
-                                                                                                                                                    
+                            # Get location first
+                            location = location_elem.get_text(strip=True) if location_elem else 'Remote'
+                            
                             internship = {
                                 'Title': title_elem.get_text(strip=True),
                                 'Company': company_elem.get_text(strip=True) if company_elem else 'N/A',
-                        'Location': location,                                'Stipend': stipend_elem.get_text(strip=True) if stipend_elem else 'Unpaid',
-                                'Link': f"https://internshala.com{link_elem['href']}" if link_elem else 'N/A',
+                                'Location': location,
+                                'Stipend': stipend_elem.get_text(strip=True) if stipend_elem else 'Unpaid',
+                                'Link': f"https://internshala.com{link_elem['href']}" if link_elem and link_elem.get('href') else 'N/A',
                                 'Source': 'Internshala',
                                 'Date': datetime.now().strftime('%Y-%m-%d'),
                                 'Category': keyword.replace('-', ' ').title()
@@ -120,9 +120,8 @@ def scrape_indeed_india():
                             internship = {
                                 'Title': title_elem.get_text(strip=True),
                                 'Company': company_elem.get_text(strip=True) if company_elem else 'N/A',
-                        'Location': location_elem.get_text(strip=True) if location_elem else 'India',
-                                                        'Stipend': 'Check Link',
-                                                                                                                                                            
+                                'Location': location_elem.get_text(strip=True) if location_elem else 'India',
+                                'Stipend': 'Check Link',
                                 'Link': f"https://in.indeed.com/viewjob?jk={job_id}" if job_id else 'N/A',
                                 'Source': 'Indeed India',
                                 'Date': datetime.now().strftime('%Y-%m-%d'),
